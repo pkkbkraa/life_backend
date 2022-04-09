@@ -1,8 +1,8 @@
 <?php 
 return [
     'labels' => [
-        'Category' => 'Category',
-        'category' => 'Category',
+        'Category' => '商品分類',
+        'category' => '商品分類',
     ],
     'fields' => [
         'name' => '分類名稱',

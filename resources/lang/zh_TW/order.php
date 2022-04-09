@@ -1,8 +1,8 @@
 <?php 
 return [
     'labels' => [
-        'Order' => 'Order',
-        'order' => 'Order',
+        'Order' => '訂單',
+        'order' => '訂單',
     ],
     'fields' => [
         'number' => '訂單編號',
@@ -17,6 +17,7 @@ return [
         'bank_code' => '銀行代碼',
         'status' => '訂單狀態',
         'deliver_type' => '出貨狀態',
+        'deliver_date' => '出貨日期',
         'receiver' => '收貨資料',
     ],
     'options' => [

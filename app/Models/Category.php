@@ -2,10 +2,16 @@
 
 namespace App\Models;
 
-use Dcat\Admin\Traits\HasDateTimeFormatter;
-
 use Illuminate\Database\Eloquent\Model;
+use Spatie\EloquentSortable\Sortable;
+use Spatie\EloquentSortable\SortableTrait;
 
-class Category extends Model
+class Category extends Model implements Sortable
 {
-	use HasDateTimeFormatter;    }
+    use SortableTrait;
+
+    protected $sortable = [
+        'order_column_name' => 'order',
+        'sort_when_creating' => true,
+    ];
+}

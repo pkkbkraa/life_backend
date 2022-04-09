@@ -7,6 +7,7 @@ use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
+use App\Models;
 
 class OrderController extends AdminController
 {
@@ -17,57 +18,31 @@ class OrderController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new Order(), function (Grid $grid) {
-            $grid->column('id')->sortable();
-            $grid->column('number');
-            $grid->column('product_id');
-            $grid->column('product_name');
+        return Grid::make(new Order(['user']), function (Grid $grid) {
+            $grid->column('number')->sortable();
+            $grid->column('vendor_name')->sortable();
+            $grid->column('product_name')->sortable();
             $grid->column('qty');
             $grid->column('amount');
-            $grid->column('vendor_id');
-            $grid->column('vendor_name');
-            $grid->column('user_id');
-            $grid->column('bank_name');
-            $grid->column('bank_code');
-            $grid->column('status');
-            $grid->column('deliver_type');
+            $grid->column('user.name', '購買會員');
             $grid->column('receiver');
-            $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
+            $grid->column('status')->select([0 => '未付款', 1 => '已付款', 2 => '已完成', 3 => '已取消']);
+            $grid->column('deliver_type')->select([0 => '未出貨', 1 => '出貨中', 2 => '已完成']);
+            $grid->column('deliver_date');
         
+            $grid->disableCreateButton();
+            $grid->disableActions();
+            $grid->disableToolbar();
             $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
+                $filter->expand();
+                $filter->panel();
+                
+                $filter->equal('number')->width(3);
+                $filter->equal('user_id')->select(Models\User::all()->sortByDesc('id')->pluck('email', 'id'))->width(3);
+                $filter->equal('status')->select([0 => '未付款', 1 => '已付款', 2 => '已完成', 3 => '已取消'])->width(2);
+                $filter->equal('deliver_type')->select([0 => '未出貨', 1 => '出貨中', 2 => '已完成'])->width(2);
         
             });
-        });
-    }
-
-    /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     *
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        return Show::make($id, new Order(), function (Show $show) {
-            $show->field('id');
-            $show->field('number');
-            $show->field('product_id');
-            $show->field('product_name');
-            $show->field('qty');
-            $show->field('amount');
-            $show->field('vendor_id');
-            $show->field('vendor_name');
-            $show->field('user_id');
-            $show->field('bank_name');
-            $show->field('bank_code');
-            $show->field('status');
-            $show->field('deliver_type');
-            $show->field('receiver');
-            $show->field('created_at');
-            $show->field('updated_at');
         });
     }
 

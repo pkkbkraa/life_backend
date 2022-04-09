@@ -1,8 +1,8 @@
 <?php 
 return [
     'labels' => [
-        'User' => 'User',
-        'user' => 'User',
+        'User' => '會員',
+        'user' => '會員',
     ],
     'fields' => [
         'auth' => '授權平台',
@@ -12,6 +12,7 @@ return [
         'number' => '會員編號',
         'gender' => '性別',
         'birthday' => '生日',
+        'status' => '啟用/停用',
     ],
     'options' => [
     ],

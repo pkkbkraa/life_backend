@@ -6,11 +6,9 @@ use Dcat\Admin\Traits\HasDateTimeFormatter;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Coupon extends Model
+class PromotionLog extends Model
 {
 	use HasDateTimeFormatter;
-	
-    public function user() {
-        return $this->belongsTo(User::class);
-    }
+    protected $table = 'promotion_logs';
+    
 }

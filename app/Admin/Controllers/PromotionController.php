@@ -2,13 +2,13 @@
 
 namespace App\Admin\Controllers;
 
-use App\Admin\Repositories\Vendor;
+use App\Admin\Repositories\Promotion;
 use Dcat\Admin\Form;
 use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 
-class VendorController extends AdminController
+class PromotionController extends AdminController
 {
     /**
      * Make a grid builder.
@@ -17,19 +17,19 @@ class VendorController extends AdminController
      */
     protected function grid()
     {
-        return Grid::make(new Vendor(), function (Grid $grid) {
-            $grid->column('name')->sortable();
-            $grid->column('email')->sortable();
+        return Grid::make(new Promotion(), function (Grid $grid) {
+            $grid->column('code')->sortable();
+            $grid->column('discount')->sortable();
+            $grid->column('amount');
+            $grid->column('使用期限')->display(function(){
+                return $this->start.' - '.$this->end;
+            });
             $grid->column('status')->switch();
-            $grid->column('created_at');
-            $grid->column('updated_at')->sortable();
         
-            $grid->disableDeleteButton();
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->panel();
                 
-                $filter->equal('name')->width(3);
-                $filter->equal('email')->width(3);
+                $filter->equal('code')->width(3);
                 $filter->equal('status')->select([0 => '停用', 1 => '啟用'])->width(2);
         
             });
@@ -44,25 +44,22 @@ class VendorController extends AdminController
     protected function form()
     {
         $code = $this->generateRandomString();
-        return Form::make(new Vendor(), function (Form $form) use ($code) {
-            $form->text('name')->required();
-            $form->text('email')->required();
-            $form->text('bank_name');
-            $form->text('bank_code');
-            $form->text('shop_no');
-            $form->text('hash');
-            $form->text('key');
-            $form->switch('status')->default(1);
+        return Form::make(new Promotion(), function (Form $form) use ($code) {
             $form->hidden('code');
-        
+            $form->decimal('discount');
+            $form->decimal('amount');
+            $form->date('start');
+            $form->date('end');
+            $form->switch('status');
+
             $form->saving(function (Form $form) use ($code) {
                 $form->code = $code;
             });
         });
     }
 
-    private function generateRandomString($length = 2) {
-        $characters = 'ABCDEFGHJKMNPQRSTUVWXYZ';
+    private function generateRandomString($length = 10) {
+        $characters = '23456789ABCDEFGHJKMNPQRSTUVWXYZ';
         $charactersLength = strlen($characters);
         $randomString = '';
         for ($i = 0; $i < $length; $i++) {

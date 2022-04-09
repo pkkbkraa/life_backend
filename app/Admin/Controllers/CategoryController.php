@@ -18,34 +18,17 @@ class CategoryController extends AdminController
     protected function grid()
     {
         return Grid::make(new Category(), function (Grid $grid) {
-            $grid->column('id')->sortable();
-            $grid->column('name');
-            $grid->column('order');
+            $grid->model()->orderBy('order');
+
+            $grid->order->orderable();
+            $grid->column('name')->editable(true);
             $grid->column('created_at');
             $grid->column('updated_at')->sortable();
-        
-            $grid->filter(function (Grid\Filter $filter) {
-                $filter->equal('id');
-        
-            });
-        });
-    }
 
-    /**
-     * Make a show builder.
-     *
-     * @param mixed $id
-     *
-     * @return Show
-     */
-    protected function detail($id)
-    {
-        return Show::make($id, new Category(), function (Show $show) {
-            $show->field('id');
-            $show->field('name');
-            $show->field('order');
-            $show->field('created_at');
-            $show->field('updated_at');
+            $grid->disableToolbar();
+            $grid->quickCreate(function (Grid\Tools\QuickCreate $create) {
+                $create->text('name');
+            });
         });
     }
 
@@ -58,7 +41,7 @@ class CategoryController extends AdminController
     {
         return Form::make(new Category(), function (Form $form) {
             $form->display('id');
-            $form->text('name');
+            $form->text('name')->required();
             $form->text('order');
         
             $form->display('created_at');

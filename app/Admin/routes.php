@@ -14,4 +14,12 @@ Route::group([
 
     $router->get('/', 'HomeController@index');
 
+	Route::resource('category', 'CategoryController');
+	Route::resource('coupon', 'CouponController');
+	Route::resource('promotion', 'PromotionController');
+	Route::resource('order', 'OrderController');
+	Route::resource('product', 'ProductController');
+	Route::resource('user', 'UserController');
+	Route::resource('vendor', 'VendorController');
+
 });
