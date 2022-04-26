@@ -25,5 +25,6 @@ class User extends Authenticatable
         'number',
         'gender',
         'birthday',
+        'status',
     ];
 }

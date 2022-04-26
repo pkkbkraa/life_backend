@@ -21,5 +21,7 @@ Route::group([
 	Route::resource('product', 'ProductController');
 	Route::resource('user', 'UserController');
 	Route::resource('vendor', 'VendorController');
+	Route::resource('banner', 'BannerController');
+    Route::resource('email-management', 'EmailManagementController');
 
 });

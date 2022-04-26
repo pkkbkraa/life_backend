@@ -8,6 +8,7 @@ use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 use App\Models;
+use App\Admin\Renderable\MyCouponTable;
 
 class UserController extends AdminController
 {
@@ -26,6 +27,11 @@ class UserController extends AdminController
             $grid->column('gender');
             $grid->column('birthday');
             $grid->column('status')->switch();
+
+            $grid->column('優惠券')->modal(function ($modal) {
+                $modal->title('優惠券列表# - '.$this->number);
+                return MyCouponTable::make();
+            });
             $grid->column('created_at', '加入日期');
             
             $grid->disableCreateButton();

@@ -8,6 +8,7 @@ use Dcat\Admin\Grid;
 use Dcat\Admin\Show;
 use Dcat\Admin\Http\Controllers\AdminController;
 use App\Models;
+use Dcat\Admin\Widgets\Table;
 
 class OrderController extends AdminController
 {
@@ -25,7 +26,20 @@ class OrderController extends AdminController
             $grid->column('qty');
             $grid->column('amount');
             $grid->column('user.name', '購買會員');
-            $grid->column('receiver');
+            $grid->column('receiver')->display(function(){
+                return '展開';
+            })->expand(function(){
+                $table = ['收件人', 'email', '手機號碼', '地址'];
+                $data = json_decode($this->receiver);
+
+                $receiver[] = [
+                    'name' => $data->name,
+                    'email' => $data->email,
+                    'phone' => substr_replace(decrypt($data->phone), '***', 4, 3),
+                    'address' => $data->zip.' '.$data->country.$data->district.$data->address,
+                ];
+                return new Table($table, $receiver);
+            });
             $grid->column('status')->select([0 => '未付款', 1 => '已付款', 2 => '已完成', 3 => '已取消']);
             $grid->column('deliver_type')->select([0 => '未出貨', 1 => '出貨中', 2 => '已完成']);
             $grid->column('deliver_date');

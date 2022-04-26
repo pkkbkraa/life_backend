@@ -9,13 +9,13 @@
         "asundust/dcat-auth-captcha": "^2.0",
         "celaraze/dcat-extension-plus": "dev-master",
         "dcat/laravel-admin": "2.*",
-        "death_satan/dcat-env": "^1.0",
         "fruitcake/laravel-cors": "^2.0",
         "guzzlehttp/guzzle": "^7.0.1",
         "jyil/log-viewer": "^1.0",
         "laravel/framework": "^8.75",
         "laravel/sanctum": "^2.11",
-        "laravel/tinker": "^2.5"
+        "laravel/tinker": "^2.5",
+        "league/flysystem-aws-s3-v3": "~1.0"
     },
     "require-dev": {
         "facade/ignition": "^2.5",

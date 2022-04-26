@@ -26,6 +26,8 @@ class CouponController extends AdminController
                 return $this->start.' - '.$this->end;
             });
             $grid->column('status')->switch();
+            $grid->column('create_type', '對象')->using([1 => '新會員', 2 => '所有會員']);
+            $grid->column('send_type', '發送方式')->using([1 => '系統發送', 2 => '網頁領取']);
         
             $grid->filter(function (Grid\Filter $filter) {
                 $filter->panel();
@@ -50,6 +52,8 @@ class CouponController extends AdminController
             $form->decimal('amount')->required();
             $form->date('start')->required();
             $form->date('end')->required();
+            $form->radio('create_type', '對象')->options([1 => '新會員', 2 => '所有會員'])->required();
+            $form->radio('send_type', '發送方式')->options([1 => '系統發送', 2 => '網頁領取'])->required();
             $form->switch('status')->default(1);
         });
     }

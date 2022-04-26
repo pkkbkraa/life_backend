@@ -12,10 +12,8 @@ namespace Dcat\Admin {
 
     /**
      * @property Grid\Column|Collection order
-     * @property Grid\Column|Collection name
-     * @property Grid\Column|Collection value
-     * @property Grid\Column|Collection notes
      * @property Grid\Column|Collection id
+     * @property Grid\Column|Collection name
      * @property Grid\Column|Collection type
      * @property Grid\Column|Collection version
      * @property Grid\Column|Collection detail
@@ -37,10 +35,14 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection http_method
      * @property Grid\Column|Collection http_path
      * @property Grid\Column|Collection role_id
+     * @property Grid\Column|Collection value
      * @property Grid\Column|Collection username
      * @property Grid\Column|Collection password
      * @property Grid\Column|Collection avatar
      * @property Grid\Column|Collection remember_token
+     * @property Grid\Column|Collection link
+     * @property Grid\Column|Collection images
+     * @property Grid\Column|Collection status
      * @property Grid\Column|Collection coupon_id
      * @property Grid\Column|Collection coupon_name
      * @property Grid\Column|Collection order_id
@@ -50,24 +52,37 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection discount
      * @property Grid\Column|Collection start
      * @property Grid\Column|Collection end
-     * @property Grid\Column|Collection status
-     * @property Grid\Column|Collection use_date
+     * @property Grid\Column|Collection create_type
+     * @property Grid\Column|Collection send_type
+     * @property Grid\Column|Collection template_name
+     * @property Grid\Column|Collection subject
+     * @property Grid\Column|Collection body
+     * @property Grid\Column|Collection sms
+     * @property Grid\Column|Collection manager_mail
      * @property Grid\Column|Collection uuid
      * @property Grid\Column|Collection connection
      * @property Grid\Column|Collection queue
      * @property Grid\Column|Collection payload
      * @property Grid\Column|Collection exception
      * @property Grid\Column|Collection failed_at
+     * @property Grid\Column|Collection used
+     * @property Grid\Column|Collection use_date
+     * @property Grid\Column|Collection crypt
      * @property Grid\Column|Collection product_id
+     * @property Grid\Column|Collection image
+     * @property Grid\Column|Collection price
      * @property Grid\Column|Collection qty
+     * @property Grid\Column|Collection total
      * @property Grid\Column|Collection vendor_id
      * @property Grid\Column|Collection vendor_name
+     * @property Grid\Column|Collection payment
      * @property Grid\Column|Collection bank_name
      * @property Grid\Column|Collection bank_code
      * @property Grid\Column|Collection bank_account
      * @property Grid\Column|Collection deliver_type
      * @property Grid\Column|Collection deliver_date
      * @property Grid\Column|Collection receiver
+     * @property Grid\Column|Collection remark
      * @property Grid\Column|Collection email
      * @property Grid\Column|Collection token
      * @property Grid\Column|Collection tokenable_type
@@ -76,9 +91,12 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection last_used_at
      * @property Grid\Column|Collection category_id
      * @property Grid\Column|Collection category_name
+     * @property Grid\Column|Collection compendium
      * @property Grid\Column|Collection spec
-     * @property Grid\Column|Collection price
-     * @property Grid\Column|Collection images
+     * @property Grid\Column|Collection offer
+     * @property Grid\Column|Collection background
+     * @property Grid\Column|Collection hightlight
+     * @property Grid\Column|Collection promotion_id
      * @property Grid\Column|Collection code
      * @property Grid\Column|Collection auth
      * @property Grid\Column|Collection auth_id
@@ -89,10 +107,8 @@ namespace Dcat\Admin {
      * @property Grid\Column|Collection key
      *
      * @method Grid\Column|Collection order(string $label = null)
-     * @method Grid\Column|Collection name(string $label = null)
-     * @method Grid\Column|Collection value(string $label = null)
-     * @method Grid\Column|Collection notes(string $label = null)
      * @method Grid\Column|Collection id(string $label = null)
+     * @method Grid\Column|Collection name(string $label = null)
      * @method Grid\Column|Collection type(string $label = null)
      * @method Grid\Column|Collection version(string $label = null)
      * @method Grid\Column|Collection detail(string $label = null)
@@ -114,10 +130,14 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection http_method(string $label = null)
      * @method Grid\Column|Collection http_path(string $label = null)
      * @method Grid\Column|Collection role_id(string $label = null)
+     * @method Grid\Column|Collection value(string $label = null)
      * @method Grid\Column|Collection username(string $label = null)
      * @method Grid\Column|Collection password(string $label = null)
      * @method Grid\Column|Collection avatar(string $label = null)
      * @method Grid\Column|Collection remember_token(string $label = null)
+     * @method Grid\Column|Collection link(string $label = null)
+     * @method Grid\Column|Collection images(string $label = null)
+     * @method Grid\Column|Collection status(string $label = null)
      * @method Grid\Column|Collection coupon_id(string $label = null)
      * @method Grid\Column|Collection coupon_name(string $label = null)
      * @method Grid\Column|Collection order_id(string $label = null)
@@ -127,24 +147,37 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection discount(string $label = null)
      * @method Grid\Column|Collection start(string $label = null)
      * @method Grid\Column|Collection end(string $label = null)
-     * @method Grid\Column|Collection status(string $label = null)
-     * @method Grid\Column|Collection use_date(string $label = null)
+     * @method Grid\Column|Collection create_type(string $label = null)
+     * @method Grid\Column|Collection send_type(string $label = null)
+     * @method Grid\Column|Collection template_name(string $label = null)
+     * @method Grid\Column|Collection subject(string $label = null)
+     * @method Grid\Column|Collection body(string $label = null)
+     * @method Grid\Column|Collection sms(string $label = null)
+     * @method Grid\Column|Collection manager_mail(string $label = null)
      * @method Grid\Column|Collection uuid(string $label = null)
      * @method Grid\Column|Collection connection(string $label = null)
      * @method Grid\Column|Collection queue(string $label = null)
      * @method Grid\Column|Collection payload(string $label = null)
      * @method Grid\Column|Collection exception(string $label = null)
      * @method Grid\Column|Collection failed_at(string $label = null)
+     * @method Grid\Column|Collection used(string $label = null)
+     * @method Grid\Column|Collection use_date(string $label = null)
+     * @method Grid\Column|Collection crypt(string $label = null)
      * @method Grid\Column|Collection product_id(string $label = null)
+     * @method Grid\Column|Collection image(string $label = null)
+     * @method Grid\Column|Collection price(string $label = null)
      * @method Grid\Column|Collection qty(string $label = null)
+     * @method Grid\Column|Collection total(string $label = null)
      * @method Grid\Column|Collection vendor_id(string $label = null)
      * @method Grid\Column|Collection vendor_name(string $label = null)
+     * @method Grid\Column|Collection payment(string $label = null)
      * @method Grid\Column|Collection bank_name(string $label = null)
      * @method Grid\Column|Collection bank_code(string $label = null)
      * @method Grid\Column|Collection bank_account(string $label = null)
      * @method Grid\Column|Collection deliver_type(string $label = null)
      * @method Grid\Column|Collection deliver_date(string $label = null)
      * @method Grid\Column|Collection receiver(string $label = null)
+     * @method Grid\Column|Collection remark(string $label = null)
      * @method Grid\Column|Collection email(string $label = null)
      * @method Grid\Column|Collection token(string $label = null)
      * @method Grid\Column|Collection tokenable_type(string $label = null)
@@ -153,9 +186,12 @@ namespace Dcat\Admin {
      * @method Grid\Column|Collection last_used_at(string $label = null)
      * @method Grid\Column|Collection category_id(string $label = null)
      * @method Grid\Column|Collection category_name(string $label = null)
+     * @method Grid\Column|Collection compendium(string $label = null)
      * @method Grid\Column|Collection spec(string $label = null)
-     * @method Grid\Column|Collection price(string $label = null)
-     * @method Grid\Column|Collection images(string $label = null)
+     * @method Grid\Column|Collection offer(string $label = null)
+     * @method Grid\Column|Collection background(string $label = null)
+     * @method Grid\Column|Collection hightlight(string $label = null)
+     * @method Grid\Column|Collection promotion_id(string $label = null)
      * @method Grid\Column|Collection code(string $label = null)
      * @method Grid\Column|Collection auth(string $label = null)
      * @method Grid\Column|Collection auth_id(string $label = null)
@@ -171,10 +207,8 @@ namespace Dcat\Admin {
 
     /**
      * @property Show\Field|Collection order
-     * @property Show\Field|Collection name
-     * @property Show\Field|Collection value
-     * @property Show\Field|Collection notes
      * @property Show\Field|Collection id
+     * @property Show\Field|Collection name
      * @property Show\Field|Collection type
      * @property Show\Field|Collection version
      * @property Show\Field|Collection detail
@@ -196,10 +230,14 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection http_method
      * @property Show\Field|Collection http_path
      * @property Show\Field|Collection role_id
+     * @property Show\Field|Collection value
      * @property Show\Field|Collection username
      * @property Show\Field|Collection password
      * @property Show\Field|Collection avatar
      * @property Show\Field|Collection remember_token
+     * @property Show\Field|Collection link
+     * @property Show\Field|Collection images
+     * @property Show\Field|Collection status
      * @property Show\Field|Collection coupon_id
      * @property Show\Field|Collection coupon_name
      * @property Show\Field|Collection order_id
@@ -209,24 +247,37 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection discount
      * @property Show\Field|Collection start
      * @property Show\Field|Collection end
-     * @property Show\Field|Collection status
-     * @property Show\Field|Collection use_date
+     * @property Show\Field|Collection create_type
+     * @property Show\Field|Collection send_type
+     * @property Show\Field|Collection template_name
+     * @property Show\Field|Collection subject
+     * @property Show\Field|Collection body
+     * @property Show\Field|Collection sms
+     * @property Show\Field|Collection manager_mail
      * @property Show\Field|Collection uuid
      * @property Show\Field|Collection connection
      * @property Show\Field|Collection queue
      * @property Show\Field|Collection payload
      * @property Show\Field|Collection exception
      * @property Show\Field|Collection failed_at
+     * @property Show\Field|Collection used
+     * @property Show\Field|Collection use_date
+     * @property Show\Field|Collection crypt
      * @property Show\Field|Collection product_id
+     * @property Show\Field|Collection image
+     * @property Show\Field|Collection price
      * @property Show\Field|Collection qty
+     * @property Show\Field|Collection total
      * @property Show\Field|Collection vendor_id
      * @property Show\Field|Collection vendor_name
+     * @property Show\Field|Collection payment
      * @property Show\Field|Collection bank_name
      * @property Show\Field|Collection bank_code
      * @property Show\Field|Collection bank_account
      * @property Show\Field|Collection deliver_type
      * @property Show\Field|Collection deliver_date
      * @property Show\Field|Collection receiver
+     * @property Show\Field|Collection remark
      * @property Show\Field|Collection email
      * @property Show\Field|Collection token
      * @property Show\Field|Collection tokenable_type
@@ -235,9 +286,12 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection last_used_at
      * @property Show\Field|Collection category_id
      * @property Show\Field|Collection category_name
+     * @property Show\Field|Collection compendium
      * @property Show\Field|Collection spec
-     * @property Show\Field|Collection price
-     * @property Show\Field|Collection images
+     * @property Show\Field|Collection offer
+     * @property Show\Field|Collection background
+     * @property Show\Field|Collection hightlight
+     * @property Show\Field|Collection promotion_id
      * @property Show\Field|Collection code
      * @property Show\Field|Collection auth
      * @property Show\Field|Collection auth_id
@@ -248,10 +302,8 @@ namespace Dcat\Admin {
      * @property Show\Field|Collection key
      *
      * @method Show\Field|Collection order(string $label = null)
-     * @method Show\Field|Collection name(string $label = null)
-     * @method Show\Field|Collection value(string $label = null)
-     * @method Show\Field|Collection notes(string $label = null)
      * @method Show\Field|Collection id(string $label = null)
+     * @method Show\Field|Collection name(string $label = null)
      * @method Show\Field|Collection type(string $label = null)
      * @method Show\Field|Collection version(string $label = null)
      * @method Show\Field|Collection detail(string $label = null)
@@ -273,10 +325,14 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection http_method(string $label = null)
      * @method Show\Field|Collection http_path(string $label = null)
      * @method Show\Field|Collection role_id(string $label = null)
+     * @method Show\Field|Collection value(string $label = null)
      * @method Show\Field|Collection username(string $label = null)
      * @method Show\Field|Collection password(string $label = null)
      * @method Show\Field|Collection avatar(string $label = null)
      * @method Show\Field|Collection remember_token(string $label = null)
+     * @method Show\Field|Collection link(string $label = null)
+     * @method Show\Field|Collection images(string $label = null)
+     * @method Show\Field|Collection status(string $label = null)
      * @method Show\Field|Collection coupon_id(string $label = null)
      * @method Show\Field|Collection coupon_name(string $label = null)
      * @method Show\Field|Collection order_id(string $label = null)
@@ -286,24 +342,37 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection discount(string $label = null)
      * @method Show\Field|Collection start(string $label = null)
      * @method Show\Field|Collection end(string $label = null)
-     * @method Show\Field|Collection status(string $label = null)
-     * @method Show\Field|Collection use_date(string $label = null)
+     * @method Show\Field|Collection create_type(string $label = null)
+     * @method Show\Field|Collection send_type(string $label = null)
+     * @method Show\Field|Collection template_name(string $label = null)
+     * @method Show\Field|Collection subject(string $label = null)
+     * @method Show\Field|Collection body(string $label = null)
+     * @method Show\Field|Collection sms(string $label = null)
+     * @method Show\Field|Collection manager_mail(string $label = null)
      * @method Show\Field|Collection uuid(string $label = null)
      * @method Show\Field|Collection connection(string $label = null)
      * @method Show\Field|Collection queue(string $label = null)
      * @method Show\Field|Collection payload(string $label = null)
      * @method Show\Field|Collection exception(string $label = null)
      * @method Show\Field|Collection failed_at(string $label = null)
+     * @method Show\Field|Collection used(string $label = null)
+     * @method Show\Field|Collection use_date(string $label = null)
+     * @method Show\Field|Collection crypt(string $label = null)
      * @method Show\Field|Collection product_id(string $label = null)
+     * @method Show\Field|Collection image(string $label = null)
+     * @method Show\Field|Collection price(string $label = null)
      * @method Show\Field|Collection qty(string $label = null)
+     * @method Show\Field|Collection total(string $label = null)
      * @method Show\Field|Collection vendor_id(string $label = null)
      * @method Show\Field|Collection vendor_name(string $label = null)
+     * @method Show\Field|Collection payment(string $label = null)
      * @method Show\Field|Collection bank_name(string $label = null)
      * @method Show\Field|Collection bank_code(string $label = null)
      * @method Show\Field|Collection bank_account(string $label = null)
      * @method Show\Field|Collection deliver_type(string $label = null)
      * @method Show\Field|Collection deliver_date(string $label = null)
      * @method Show\Field|Collection receiver(string $label = null)
+     * @method Show\Field|Collection remark(string $label = null)
      * @method Show\Field|Collection email(string $label = null)
      * @method Show\Field|Collection token(string $label = null)
      * @method Show\Field|Collection tokenable_type(string $label = null)
@@ -312,9 +381,12 @@ namespace Dcat\Admin {
      * @method Show\Field|Collection last_used_at(string $label = null)
      * @method Show\Field|Collection category_id(string $label = null)
      * @method Show\Field|Collection category_name(string $label = null)
+     * @method Show\Field|Collection compendium(string $label = null)
      * @method Show\Field|Collection spec(string $label = null)
-     * @method Show\Field|Collection price(string $label = null)
-     * @method Show\Field|Collection images(string $label = null)
+     * @method Show\Field|Collection offer(string $label = null)
+     * @method Show\Field|Collection background(string $label = null)
+     * @method Show\Field|Collection hightlight(string $label = null)
+     * @method Show\Field|Collection promotion_id(string $label = null)
      * @method Show\Field|Collection code(string $label = null)
      * @method Show\Field|Collection auth(string $label = null)
      * @method Show\Field|Collection auth_id(string $label = null)
