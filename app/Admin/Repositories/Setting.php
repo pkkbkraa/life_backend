@@ -2,10 +2,10 @@
 
 namespace App\Admin\Repositories;
 
-use App\Models\CouponLog as Model;
+use App\Models\Setting as Model;
 use Dcat\Admin\Repositories\EloquentRepository;
 
-class CouponLog extends EloquentRepository
+class Setting extends EloquentRepository
 {
     /**
      * Model.

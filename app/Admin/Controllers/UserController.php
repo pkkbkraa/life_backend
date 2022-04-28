@@ -32,7 +32,9 @@ class UserController extends AdminController
                 $modal->title('優惠券列表# - '.$this->number);
                 return MyCouponTable::make();
             });
-            $grid->column('created_at', '加入日期');
+            $grid->column('created_at', '加入時間')->display(function(){
+                return date('Y-m-d H:i:s', strtotime($this->created_at));
+            });
             
             $grid->disableCreateButton();
             $grid->disableActions();

@@ -24,8 +24,12 @@ class OrderController extends AdminController
             $grid->column('vendor_name')->sortable();
             $grid->column('product_name')->sortable();
             $grid->column('qty');
-            $grid->column('amount');
+            $grid->column('total');
             $grid->column('user.name', '購買會員');
+            $grid->column('last_5');
+            $grid->column('paid_at')->display(function(){
+                return $this->paid_at ? date('Y-m-d H:i:s', strtotime($this->paid_at)): null;
+            });
             $grid->column('receiver')->display(function(){
                 return '展開';
             })->expand(function(){
@@ -40,8 +44,8 @@ class OrderController extends AdminController
                 ];
                 return new Table($table, $receiver);
             });
-            $grid->column('status')->select([0 => '未付款', 1 => '已付款', 2 => '已完成', 3 => '已取消']);
-            $grid->column('deliver_type')->select([0 => '未出貨', 1 => '出貨中', 2 => '已完成']);
+            $grid->column('status')->select([0 => '未付款', 1 => '待確認', 2 => '已付款', 3 => '已完成', 4 => '已取消']);
+            $grid->column('deliver_type')->select([0 => '未出貨', 1 => '出貨中', 2 => '已完成', 3 => '已取消']);
             $grid->column('deliver_date');
         
             $grid->disableCreateButton();
@@ -53,8 +57,8 @@ class OrderController extends AdminController
                 
                 $filter->equal('number')->width(3);
                 $filter->equal('user_id')->select(Models\User::all()->sortByDesc('id')->pluck('email', 'id'))->width(3);
-                $filter->equal('status')->select([0 => '未付款', 1 => '已付款', 2 => '已完成', 3 => '已取消'])->width(2);
-                $filter->equal('deliver_type')->select([0 => '未出貨', 1 => '出貨中', 2 => '已完成'])->width(2);
+                $filter->equal('status')->select([0 => '未付款', 1 => '待確認', 2 => '已付款', 3 => '已完成', 4 => '已取消'])->width(2);
+                $filter->equal('deliver_type')->select([0 => '未出貨', 1 => '出貨中', 2 => '已完成', 3 => '已取消'])->width(2);
         
             });
         });
@@ -68,23 +72,18 @@ class OrderController extends AdminController
     protected function form()
     {
         return Form::make(new Order(), function (Form $form) {
-            $form->display('id');
-            $form->text('number');
-            $form->text('product_id');
-            $form->text('product_name');
-            $form->text('qty');
-            $form->text('amount');
-            $form->text('vendor_id');
-            $form->text('vendor_name');
-            $form->text('user_id');
-            $form->text('bank_name');
-            $form->text('bank_code');
-            $form->text('status');
-            $form->text('deliver_type');
-            $form->text('receiver');
-        
-            $form->display('created_at');
-            $form->display('updated_at');
+            $form->hidden('status');
+            $form->hidden('deliver_type');
+            $form->hidden('deliver_date');
+
+            $form->saving(function (Form $form){
+                
+                if($form->status == 4)
+                    $form->deliver_type = 3;
+                    
+                if($form->deliver_type == 1 || $form->deliver_type == 2)
+                    $form->deliver_date = date('Y-m-d H:i:s');
+            });
         });
     }
 }

@@ -9,7 +9,8 @@ return [
         'product_id' => '商品代碼',
         'product_name' => '商品名稱',
         'qty' => '數量',
-        'amount' => '訂單金額',
+        'amount' => '單價',
+        'total' => '訂單金額',
         'vendor_id' => '供應商代碼',
         'vendor_name' => '供應商名稱',
         'user_id' => '購買人',
@@ -19,6 +20,8 @@ return [
         'deliver_type' => '出貨狀態',
         'deliver_date' => '出貨日期',
         'receiver' => '收貨資料',
+        'last_5' => '銀行末5碼',
+        'paid_at' => '付款日期',
     ],
     'options' => [
     ],

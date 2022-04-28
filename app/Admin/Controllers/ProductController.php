@@ -26,6 +26,7 @@ class ProductController extends AdminController
             $grid->column('name');
             $grid->column('price');
             $grid->column('offer');
+            $grid->column('delivery_fee');
             $grid->column('status')->switch();
             $grid->column('hightlight')->switch();
         
@@ -56,6 +57,8 @@ class ProductController extends AdminController
             $form->text('name')->required();
             $form->decimal('price')->required();
             $form->decimal('offer');
+            $form->decimal('delivery_fee')->required();
+            $form->decimal('free_delivery')->help('此欄位設定為0時，即為此商品一律免運費');
             $form->image('background', '背景圖上傳')->autoUpload()->retainable()->required()->rules('image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048|dimensions:min_width=100,min_height=100,max_width=2048,max_height=2048')->compress([
                 'width' => 870,
                 'height' => 952,
@@ -83,6 +86,12 @@ class ProductController extends AdminController
             $form->textarea('compendium')->required();
             $form->textarea('spec')->required();
             $form->editor('detail')->required();
+            $form->table('meta', 'SEO meta', function ($table) {
+                $table->text('tag');
+                $table->text('value', '值');
+            })->saving(function ($v) {
+                return json_encode($v);
+            });
             $form->hidden('number');
             $form->hidden('category_name');
             $form->hidden('vendor_name');

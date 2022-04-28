@@ -49,6 +49,7 @@ class VendorController extends AdminController
             $form->text('email')->required();
             $form->text('bank_name');
             $form->text('bank_code');
+            $form->text('bank_account');
             $form->text('shop_no');
             $form->text('hash');
             $form->text('key');

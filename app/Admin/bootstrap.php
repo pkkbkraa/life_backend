@@ -55,6 +55,7 @@ Grid::resolving(function (Grid $grid) {
     $grid->disableBatchActions();
     $grid->setDialogFormDimensions('60%', '95%');
     $grid->toolsWithOutline(false);
+    $grid->fixColumns(2, -2);
 });
 
 Form::resolving(function (Form $form) {

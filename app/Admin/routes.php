@@ -23,5 +23,6 @@ Route::group([
 	Route::resource('vendor', 'VendorController');
 	Route::resource('banner', 'BannerController');
     Route::resource('email-management', 'EmailManagementController');
+	Route::resource('setting', 'SettingController');
 
 });

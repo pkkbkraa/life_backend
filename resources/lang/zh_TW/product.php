@@ -15,6 +15,8 @@ return [
         'detail' => '商品詳情',
         'price' => '原價',
         'offer' => '特價',
+        'delivery_fee' => '運費',
+        'free_delivery' => '免運金額',
         'background' => '背景圖',
         'images' => '圖片',
         'vendor_id' => '廠商',
