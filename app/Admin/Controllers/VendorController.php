@@ -47,9 +47,9 @@ class VendorController extends AdminController
         return Form::make(new Vendor(), function (Form $form) use ($code) {
             $form->text('name')->required();
             $form->text('email')->required();
-            $form->text('bank_name');
-            $form->text('bank_code');
-            $form->text('bank_account');
+            $form->text('bank_name')->required();
+            $form->text('bank_code')->required();
+            $form->text('bank_account')->required();
             $form->text('shop_no');
             $form->text('hash');
             $form->text('key');
