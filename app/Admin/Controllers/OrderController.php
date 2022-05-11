@@ -75,11 +75,29 @@ class OrderController extends AdminController
             $form->hidden('status');
             $form->hidden('deliver_type');
             $form->hidden('deliver_date');
+            $form->hidden('coupon_id');
+            $form->hidden('number');
+            $form->hidden('promotion_id');
+            $form->hidden('id');
 
             $form->saving(function (Form $form){
                 
                 if($form->status == 4)
+                {
                     $form->deliver_type = 3;
+                    if($form->coupon_id)
+                    {
+                        $my_coupon = Models\MyCoupon::where('order_number', $form->number)->first();
+                        $my_coupon->used = 0;
+                        $my_coupon->use_date = null;
+                        $my_coupon->order_number = null;
+                        $my_coupon->save();
+                    }
+                    if($form->promotion_id)
+                    {
+                        Models\PromotionLog::where('order_id', $form->id)->delete();
+                    }
+                }
                     
                 if($form->deliver_type == 1 || $form->deliver_type == 2)
                     $form->deliver_date = date('Y-m-d H:i:s');
