@@ -27,6 +27,7 @@ class OrderController extends AdminController
             $grid->column('total');
             $grid->column('user.name', '購買會員');
             $grid->column('last_5');
+            $grid->column('upload', '匯款照片')->image('80');
             $grid->column('paid_at')->display(function(){
                 return $this->paid_at ? date('Y-m-d H:i:s', strtotime($this->paid_at)): null;
             });
