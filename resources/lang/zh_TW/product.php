@@ -17,7 +17,7 @@ return [
         'offer' => '特價',
         'delivery_fee' => '運費',
         'free_delivery' => '免運金額',
-        'background' => '背景圖',
+        'background' => '商品視覺主圖',
         'images' => '圖片',
         'vendor_id' => '廠商',
         'status' => '上架/下架',
