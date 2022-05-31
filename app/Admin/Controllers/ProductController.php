@@ -26,6 +26,7 @@ class ProductController extends AdminController
             $grid->column('name');
             $grid->column('price');
             $grid->column('offer');
+            $grid->column('qty', '剩餘數量');
             $grid->column('delivery_fee');
             $grid->column('status')->switch();
             $grid->column('hightlight')->switch();
@@ -57,6 +58,7 @@ class ProductController extends AdminController
             $form->text('name')->required();
             $form->decimal('price')->required();
             $form->decimal('offer');
+            $form->decimal('qty', '剩餘數量');
             $form->decimal('delivery_fee')->required();
             $form->decimal('free_delivery')->help('此欄位設定為0時，即為此商品一律免運費');
             $form->image('background', '背景圖上傳')->autoUpload()->retainable()->required()->rules('image|mimes:jpg,png,jpeg,gif,svg,webp|max:2048|dimensions:min_width=100,min_height=100,max_width=2048,max_height=2048')->compress([
